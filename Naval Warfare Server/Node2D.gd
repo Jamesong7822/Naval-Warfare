@@ -15,3 +15,4 @@ func _peer_connected(id):
 func _peer_disconnected(id):
 	$Label_Status.text = $Label_Status.text + "\nUser " + str(id) + " disconnected"
 	$Label_User_Count.text = "Total Users: " + str(get_tree().get_network_connected_peers().size())
+	
