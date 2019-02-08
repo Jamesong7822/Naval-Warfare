@@ -1,10 +1,11 @@
-extends SceneTree
+extends Node2D
 
-func _init():
-	var socket = PacketPeerUDP.new()
+func _ready():
+	var network = NetworkedMultiplayerENet.new()
+	network.create_client("127.0.0.1", 4242)
+	get_tree().set_network_peer(network)
+	network.connect("connection_failed", self, "_on_connection_failed")
 	
-	socket.set_dest_address("127.0.0.1", 4242)
-	socket.put_packet("quit".to_ascii())
 	
-	print("Exiting application")
-	self.quit()
+func _on_connection_failed(error):
+	$labelStatus.text = "Error connecting to server " + error

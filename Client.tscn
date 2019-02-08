@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Client.gd" type="Script" id=1]
+[ext_resource path="res://Connect.gd" type="Script" id=2]
+[ext_resource path="res://Disconnect.gd" type="Script" id=3]
+
+[node name="Client" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Connect" type="Button" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 28.0
+margin_top = -16.0
+margin_right = 141.0
+margin_bottom = 4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Connect"
+flat = false
+align = 1
+script = ExtResource( 2 )
+
+[node name="Disconnect" type="Button" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -20.0
+margin_right = 108.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Disconnect"
+flat = false
+align = 1
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="Connect" to="Connect" method="_on_Connect_pressed"]
+
+[connection signal="pressed" from="Disconnect" to="Disconnect" method="_on_Disconnect_pressed"]
+
+
