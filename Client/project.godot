@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Naval Warfare"
+config/name="Client"
 config/icon="res://icon.png"
 
 [rendering]
