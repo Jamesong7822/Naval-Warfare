@@ -13,6 +13,9 @@ func _on_SendButton_pressed():
 	rpc("send", tosend)
 	$Label.text = "Sent..."
 	
+remote func login(username, password):
+	print (username.md5_text(), password.md5_text())
+	
 	
 remote func save(data):
 	var save_game = File.new()
