@@ -11,10 +11,13 @@ func _connected_ok():
 	var password = $Password.text.md5_text()
 	
 	# Send the data
-	rpc("login", username, password)
+	rpc("login", get_tree().get_network_unique_id(), username, password)
 
 func _connected_not_ok():
 	$Response.text = "Connection Failed. Recheck ip and port"
+	
+remote func _on_login_success(status):
+	print ("Login ", status, "!")
 
 func _on_LoginButton_pressed():
 	var ip_add = $IP_Add.text

@@ -1,5 +1,7 @@
 extends Node2D
 
+var DATABASE = [["8eaf076881be2bef3c568201b8bcb001", "755707bf235b082adc0a15119ec776d4"]]
+
 func _ready():
 
 	var peer = NetworkedMultiplayerENet.new()
@@ -13,8 +15,14 @@ func _on_SendButton_pressed():
 	rpc("send", tosend)
 	$Label.text = "Sent..."
 	
-remote func login(username, password):
-	print (username.md5_text(), password.md5_text())
+remote func login(id, username, password):
+	print ("ID: ", id)
+	print ("Username: ", username)
+	print ("Password: ", password)
+	if DATABASE[0][0] == username and DATABASE[0][1] == password:
+		rpc_id(id, "_on_login_success", true)
+	else:
+		rpc_id(id, "_on_login_success", false)
 	
 	
 remote func save(data):
