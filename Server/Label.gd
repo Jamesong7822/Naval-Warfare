@@ -1,6 +1,6 @@
 extends Label
 
-set_text()
+#set_text()
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"

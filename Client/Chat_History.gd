@@ -13,21 +13,21 @@ func say(id, text):
 		num += 1
 	
 		# Set the texture to my loaded img
-		$HBoxContainer/Sprite.texture = img
+		$Sprite.texture = img
 		
 		# Update text
-		$HBoxContainer/Label.text = text 
-		$HBoxContainer/Label/Timer.start()
+		$VBoxContainer/Label.text = text 
+		$VBoxContainer/Label/Timer.start()
 		print('printing 1')
 		
 	elif num2 == 0:
 		num2 += 1
 		# Set the texture to my loaded img
-		$HBoxContainer/Sprite.texture = img
+		$Sprite.texture = img
 		
 		# Update text
-		$HBoxContainer/Label2.text = text 
-		$HBoxContainer/Label2/Timer2.start()
+		$VBoxContainer/Label2.text = text 
+		$VBoxContainer/Label2/Timer2.start()
 		print('printing 2')
 		
 	else:
@@ -38,40 +38,45 @@ func say(id, text):
 		print(id_buffer)
 	
 func _ready():
+	say(100, "Hi, my name is jamesong7822 and I love to sleep")
+	say(100, "Hi, my name is philip.")
+	say(100, "Hi, my name is andy.")
 	say(100, "Hi, my name is james.")
 	say(100, "Hi, my name is philip.")
 	say(100, "Hi, my name is andy.")
-
-
+	
 
 func _on_Timer_timeout():
-	$HBoxContainer/Label.set_visible_characters(num)
+	$VBoxContainer/Label.set_visible_characters(num)
 	num += 1
-	if num < len($HBoxContainer/Label.text):
-		$HBoxContainer/Label/Timer.start()
+	if num < len($VBoxContainer/Label.text):
+		$VBoxContainer/Label/Timer.start()
 		
 	else:
-		$HBoxContainer/Label/Timer.stop()
+		$VBoxContainer/Label/Timer.stop()
 		num = 0
-		$HBoxContainer/Label.set_visible_characters(num)
+		$VBoxContainer/Label.set_visible_characters(num)
 		if text_buffer != []:
 			say(id_buffer.pop_front(),text_buffer.pop_front())
 		else:
-			$HBoxContainer/Label.set_visible_characters(num)
+			$AnimationPlayer.play("Fadeout")
+			yield($AnimationPlayer, "animation_finished")
+			
+#			$VBoxContainer/Label.set_visible_characters(num)
 	
 
 
 func _on_Timer2_timeout():
-	$HBoxContainer/Label2.set_visible_characters(num2)
+	$VBoxContainer/Label2.set_visible_characters(num2)
 	num2 += 1
-	if num2 < len($HBoxContainer/Label2.text):
-		$HBoxContainer/Label2/Timer2.start()
+	if num2 < len($VBoxContainer/Label2.text):
+		$VBoxContainer/Label2/Timer2.start()
 	else:
-		$HBoxContainer/Label2/Timer2.stop()
+		$VBoxContainer/Label2/Timer2.stop()
 		num2 = 0
-		$HBoxContainer/Label2.set_visible_characters(num2)
+		$VBoxContainer/Label2.set_visible_characters(num2)
 		if text_buffer != []:
 			say(id_buffer.pop_front(),text_buffer.pop_front())
 		else:
-			$HBoxContainer/Label2.set_visible_characters(num2)
+			$VBoxContainer/Label2.set_visible_characters(num2)
 
